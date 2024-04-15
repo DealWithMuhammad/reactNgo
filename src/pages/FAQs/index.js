@@ -1,9 +1,12 @@
-import { FaqWithBg } from "components/FAQ/FaqWithBg";
+import { FaqWithBg } from "@/components/FAQ/FaqWithBg";
+import RootLayout from "@/components/RootLayout";
 
 export default function page() {
   return (
-    <div>
-      <FaqWithBg />
-    </div>
+    <RootLayout>
+      <div>
+        <FaqWithBg />
+      </div>
+    </RootLayout>
   );
 }
