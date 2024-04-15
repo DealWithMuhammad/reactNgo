@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router"; // Import useRouter
 import { Image } from "@mantine/core";
 import SectionHeader from "@/components/Common/SectionHeader";
 import { getDocById } from "../../api/functions/get";
@@ -9,16 +9,16 @@ import { Feature } from "@/types/feature";
 import { Button, Link } from "@nextui-org/react";
 
 const Service = () => {
-  const pathname = usePathname();
+  const router = useRouter(); // Use useRouter hook
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchService = async () => {
       try {
-        setLoading(true); // Set loading to true when fetching starts
+        setLoading(true);
 
-        const match = pathname && pathname.match(/\/([^/]+)$/);
+        const match = router.asPath.match(/\/([^/]+)$/); // Use router.asPath
         const id = match && match[1];
 
         if (id) {
@@ -26,18 +26,15 @@ const Service = () => {
           setService(data);
         }
 
-        setLoading(false); // Set loading to false when fetching completes
+        setLoading(false);
       } catch (error) {
-        // Handle errors
         console.error("Error fetching service:", error);
-        setLoading(false); // Ensure loading is set to false on error
+        setLoading(false);
       }
     };
 
     fetchService();
-  }, [pathname]);
-
-  // Find the service with a matching id
+  }, [router.asPath]); // Listen to changes in router.asPath
 
   return (
     <div>
@@ -86,7 +83,7 @@ const Service = () => {
           </article>
         </>
       ) : (
-        <p>Service not found</p>
+        <p>Projects not found</p>
       )}
     </div>
   );
