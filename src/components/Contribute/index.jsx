@@ -1,6 +1,6 @@
 "use client";
 // Import necessary packages and components
-import React, { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import {
   Box,
   Button,
