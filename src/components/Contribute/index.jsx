@@ -18,7 +18,9 @@ import {
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 // Define the Contact component
-const Contribute: React.FC = () => {
+import React from "react";
+
+function Contribute() {
   // State to manage form data
   const [formData, setFormData] = useState({
     username: "",
@@ -74,9 +76,7 @@ const Contribute: React.FC = () => {
   };
 
   // Function to handle input changes
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -182,7 +182,7 @@ const Contribute: React.FC = () => {
       </Flex>
     </Box>
   );
-};
+}
 
 // Export the Contact component
 export default Contribute;
