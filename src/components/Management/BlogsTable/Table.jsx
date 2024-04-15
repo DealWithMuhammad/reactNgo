@@ -14,7 +14,7 @@ import {
 import { EditIcon } from "./EditIcon";
 import { DeleteIcon } from "./DeleteIcon";
 import { useRouter } from "next/router";
-import { deleteDocument } from "api/functions/post";
+import { deleteDocument } from "../../../pages/api/functions/post";
 
 const statusColorMap = {
   active: "success",

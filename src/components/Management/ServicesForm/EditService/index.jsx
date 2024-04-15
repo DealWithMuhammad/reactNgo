@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Table from "./Table";
 import { Spinner } from "@nextui-org/react";
-import { deleteDocument } from "api/functions/post";
+import { deleteDocument } from "../../../../pages/api/functions/post";
 import { Flex } from "@mantine/core";
-import { getService } from "api/functions/get";
+import { getService } from "../../../../pages/api/functions/get";
 
 export function ServicesTable() {
   const [service, setService] = useState([]);

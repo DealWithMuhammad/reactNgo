@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Table from "./Table";
-import { getBlogs } from "api/functions/get";
+import { getBlogs } from "../../../pages/api/functions/get";
 import { Spinner } from "@nextui-org/react";
-import { deleteDocument } from "api/functions/post";
+import { deleteDocument } from "../../../pages/api/functions/post";
 import { Flex } from "@mantine/core";
 
 export default function BlogsTable() {

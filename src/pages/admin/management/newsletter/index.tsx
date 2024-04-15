@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import { getEmails } from "api/functions/get";
+import { getEmails } from "../../../api/functions/get";
 import emailjs from "emailjs-com";
-import SectionHeader from "components/Common/SectionHeader";
+import SectionHeader from "@/components/Common/SectionHeader";
 import { Button, Textarea, Spinner } from "@nextui-org/react"; // Import Loading component from Next UI
+import RootLayout from "@/components/RootLayout";
 
 export default function AdminPage() {
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ export default function AdminPage() {
 
   const [loading, setLoading] = useState(false); // State variable to track loading state
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const emails = await getEmails();
     console.log(emails);
@@ -52,38 +53,40 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="mx-10">
-      <SectionHeader
-        headerInfo={{
-          title: "",
-          subtitle: "Newsletter Admin Panel",
-          description: "Send e-mail to your subscribers",
-        }}
-      />
+    <RootLayout>
+      <div className="mx-10">
+        <SectionHeader
+          headerInfo={{
+            title: "",
+            subtitle: "Newsletter Admin Panel",
+            description: "Send e-mail to your subscribers",
+          }}
+        />
 
-      <form onSubmit={handleSubmit}>
-        <div className="relative">
-          <Textarea
-            label="Email"
-            type="text"
-            maxRows={4}
-            placeholder="Write your message"
-            value={formData.message}
-            onChange={
-              (e) => setFormData({ ...formData, message: e.target.value }) // Fixed: updating email field in formData
-            }
-            className="w-full  text-black x-6 py-6 shadow-solid-11 focus:border-primary focus:outline-none"
-          />
-        </div>
-      </form>
-      <Button
-        className="bg-yellow-500 w-full text-large hover:text-black text-white py-6"
-        onClick={sendEmailsToAll}
-        disabled={loading} // Disable button when loading is true
-      >
-        {loading ? <Spinner size="lg" /> : "Send Email"}
-        {/* Display Loading component while loading */}
-      </Button>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="relative">
+            <Textarea
+              label="Email"
+              type="text"
+              maxRows={4}
+              placeholder="Write your message"
+              value={formData.message}
+              onChange={
+                (e) => setFormData({ ...formData, message: e.target.value }) // Fixed: updating email field in formData
+              }
+              className="w-full  text-black x-6 py-6 shadow-solid-11 focus:border-primary focus:outline-none"
+            />
+          </div>
+        </form>
+        <Button
+          className="bg-yellow-500 w-full text-large hover:text-black text-white py-6"
+          onClick={sendEmailsToAll}
+          disabled={loading} // Disable button when loading is true
+        >
+          {loading ? <Spinner size="lg" /> : "Send Email"}
+          {/* Display Loading component while loading */}
+        </Button>
+      </div>
+    </RootLayout>
   );
 }
