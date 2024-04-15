@@ -8,7 +8,7 @@ import { Link } from "@nextui-org/react";
 const Hero = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
