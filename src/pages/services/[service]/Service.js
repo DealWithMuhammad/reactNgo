@@ -1,14 +1,14 @@
 "use client";
 
+import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; // Import useRouter
 import { Image } from "@mantine/core";
 import SectionHeader from "@/components/Common/SectionHeader";
-import { getDocById } from "../../api/functions/get";
-import { Feature } from "@/types/feature";
+import { getDocById } from "../../../pages/api/functions/get";
 import { Button, Link } from "@nextui-org/react";
 
-const Service = () => {
+function Service() {
   const router = useRouter(); // Use useRouter hook
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,14 +67,7 @@ const Service = () => {
               <div dangerouslySetInnerHTML={{ __html: service?.about }} />
             </div>
             <div className="flex justify-center my-10">
-              <Button
-                size="md"
-                height="48px"
-                width="100%"
-                border="2px"
-                borderColor="white"
-                className="bg-[#f8cf2c] text-white"
-              >
+              <Button size="md" className="bg-[#f8cf2c] text-white">
                 <Link className="text-white" href="/services">
                   View All Projects
                 </Link>
@@ -87,6 +80,6 @@ const Service = () => {
       )}
     </div>
   );
-};
+}
 
 export default Service;
