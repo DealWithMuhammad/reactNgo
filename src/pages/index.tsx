@@ -24,16 +24,9 @@ export default function Home() {
         {/* <Feature /> */}
         <Services all={true} />
         <div className="my-14">
-          <BlogsListing />
+          <BlogsListing all={undefined} category={undefined} />
           <div className="flex justify-center">
-            <Button
-              size="md"
-              height="48px"
-              width="100%"
-              border="2px"
-              borderColor="white"
-              className="bg-[#f8cf2c] text-white"
-            >
+            <Button size="md" className="bg-[#f8cf2c]  text-white">
               <Link className="text-white" href="/blogs">
                 View All Blogs
               </Link>
